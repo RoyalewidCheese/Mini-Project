@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Labs</title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/CSS/Items.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+</head>
+
+<body>
+  <!-- Sidebar component -->
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- SidebarHeader component -->
+    <div class="sidebar-header">
+      <!-- Brand component -->
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <!-- SidebarToggle component -->
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!-- SidebarMenu component -->
+    <div class="sidebar-menu">
+      <ul>
+        <!-- SidebarMenuItem component -->
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items/page/1" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <li>
+          <a href="" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li>
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2 class="dashboard-header">Items</h2>
+      <div class="social-icons">
+        <span class="ti-bell"></span>
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1 class="dash-header">Items</h1>
+        <div class="dash-cards">
+        </div>
+        <section class="recent">
+          <div class="activity-card">
+            <div class="add-room-button-container">
+              <div>
+                <h3>Current Items</h3>
+              </div>
+              <button class="add-room-button">Add Items</button>
+            </div>
+            <div class="side-menu-overlay"></div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <!-- Table header -->
+                  <tr>
+                    <th>Item ID</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <% items.forEach(item => { %>
+                  <tr>
+                    <td><%= item.item_id %></td>
+                    <td><%= item.cat_name %></td>
+                    <td><%= item.brand_name %></td>
+                    <td><%= item.item_status %></td>
+                    <td>
+                      <button class="view-details-button" data-item-id="<%= item.item_id %>">View Details</button>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+              <div class="pagination">
+                <% if (currentPage > 1) { %>
+                <a href="/items/page/<%= currentPage - 1 %>" class="Previous">&laquo; Prev</a>
+                <% } %>
+                <span>Page <%= currentPage %></span>
+                <% if (items.length === limit) { %>
+                <a href="/items/page/<%= currentPage + 1 %>" class="Next"> Next &raquo;</a>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay">
+      <div class="popup">
+        <h3 class="borrower-details">Item Details:</h3>
+        <hr class="hr-margin">
+        <table id="details-table">
+          <tbody>
+            <tr>
+              <td>
+                <h4 class="left-align">Item ID:</h4>
+              </td>
+              <td class="right-align" id="item_id"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Category:</h4>
+              </td>
+              <td class="right-align" id="category"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Brand:</h4>
+              </td>
+              <td class="right-align" id="brand"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Model:</h4>
+              </td>
+              <td class="right-align" id="model"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Description:</h4>
+              </td>
+              <td class="right-align" id="description"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Warranty:</h4>
+              </td>
+              <td class="right-align" id="warranty"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Type:</h4>
+              </td>
+              <td class="right-align" id="type"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Lab Location:</h4>
+              </td>
+              <td class="right-align" id="lab_location"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Status:</h4>
+              </td>
+              <td class="right-align" id="status"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Quantity:</h4>
+              </td>
+              <td class="right-align" id="quantity"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Price Per Item:</h4>
+              </td>
+              <td class="right-align" id="price_per_item"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Total Price:</h4>
+              </td>
+              <td class="right-align" id="total_price"></td>
+            </tr>
+        </table>
+        <div class="button-contained">
+          <div class="button-wrapper">
+            <!-- Save and cancel buttons -->
+            <button class="cancel-button" id="delete-button" type="button">DELETE</button>
+            <button id="update-button" class="save-button" type="submit" id="update-button">UPDATE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-side-menu">
+      <h4>Update Items</h4>
+      <hr>
+      <form id="update-item" action="/update-item" method="POST">
+        <div>
+          <label class="name">Category</label>
+          <select name="category" class="category-select" required>
+            <option value="" selected disabled>Select Category</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Monitor">Monitor</option>
+            <option value="Projector">Projector</option>
+            <option value="Remote">Remote</option>
+            <option value="DLP Screen">DLP Screen</option>
+            <option value="TV">TV</option>
+            <option value="AVR">AVR</option>
+            <option value="Extension">Extension</option>
+            <option value="UPS">UPS</option>
+            <option value="Router">Router</option>
+            <option value="Table">Table</option>
+            <option value="Chair">Chair</option>
+            <option value="Air Conditioner">Air Conditioner</option>
+            <option value="Batteries">Battery</option>
+            <option value="Server">Server</option>
+            <option value="Printer">Printer</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="name">Brand</label>
+          <input type="text" name="brand" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Model</label>
+          <input type="text" name="model" autofocus autocomplete="off" required>
+        </div>
+        <input type="hidden" name="item_id">
+        <div>
+          <label class="Description">Description</label>
+          <input type="text" name="description" autofocus autocomplete="off">
+        </div>
+        <div>
+          <label>Warranty</label>
+          <input type="date" name="warranty" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Type</label>
+          <select name="type" class="type-select" required>
+            <option value="" selected disabled>Select Type</option>
+            <option value="Consumable">Consumable</option>
+            <option value="Non-Consumable">Non-Consumable</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Lab Location</label>
+          <select name="lab" class="type-select" required>
+            <option value="" selected disabled>Select Lab</option>
+            <option value="Not Assigned">Not Assigned</option>
+            <option value="Software Lab 1">Software Lab 1</option>
+            <option value="Software Lab 2">Software Lab 2</option>
+            <option value="Software Lab 3">Software Lab 3</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Status</label>
+          <select name="status" class="status-select" required>
+            <option value="" selected disabled>Select Status</option>
+            <option value="New">New</option>
+            <option value="Old">Old</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Lost">Lost</option>
+            <option value="Borrowed">Borrowed</option>
+          </select>
+        </div>
+        <div>
+          <label>Quantity</label>
+          <input type="number" name="quantity" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Price Per Item</label>
+          <input type="number" name="price" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Total Price</label>
+          <input type="number" name="totalprice" autofocus autocomplete="off" required>
+        </div>
+        <div class="button-container">
+          <div>
+            <div>
+              <!-- Save and cancel buttons -->
+              <button class="cancel-button" type="button">CANCEL</button>
+              <button class="save-button" type="submit">UPDATE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="side-menu">
+      <h4>Add Items</h4>
+      <hr>
+      <form id="" action="/add-item" method="POST">
+
+        <div>
+          <label class="name" style="margin-top: 15px;">Item ID</label>
+          <input type="text" name="itemid" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Category</label>
+          <select name="category" class="category-select" required>
+            <option value="" selected disabled>Select Category</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Monitor">Monitor</option>
+            <option value="Projector">Projector</option>
+            <option value="Remote">Remote</option>
+            <option value="DLP Screen">DLP Screen</option>
+            <option value="TV">TV</option>
+            <option value="AVR">AVR</option>
+            <option value="Extension">Extension</option>
+            <option value="UPS">UPS</option>
+            <option value="Router">Router</option>
+            <option value="Table">Table</option>
+            <option value="Chair">Chair</option>
+            <option value="Air Conditioner">Air Conditioner</option>
+            <option value="Batteries">Battery</option>
+            <option value="Server">Server</option>
+            <option value="Printer">Printer</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Brand</label>
+          <input type="text" name="brand" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Model</label>
+          <input type="text" name="model" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="Description">Description</label>
+          <input type="text" name="description" autofocus autocomplete="off">
+        </div>
+        <div>
+          <label>Warranty</label>
+          <input type="date" name="warranty" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Type</label>
+          <select name="type" class="type-select" required>
+            <option value="" selected disabled>Select Type</option>
+            <option value="Consumable">Consumable</option>
+            <option value="Non-Consumable">Non-Consumable</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Lab Location</label>
+          <select name="lab" class="type-select" required>
+            <option value="" selected disabled>Select Lab</option>
+            <option value="Not Assigned">Not Assigned</option>
+            <option value="Software Lab 1">Software Lab 1</option>
+            <option value="Software Lab 2">Software Lab 2</option>
+            <option value="Software Lab 3">Software Lab 3</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Status</label>
+          <select name="status" class="status-select" required>
+            <option value="" selected disabled>Select Status</option>
+            <option value="New">New</option>
+            <option value="Old">Old</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Lost">Lost</option>
+            <option value="Borrowed">Borrowed</option>
+          </select>
+        </div>
+        <div>
+          <label>Quantity</label>
+          <input type="number" name="quantity" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Price Per Item</label>
+          <input type="number" name="price" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Total Price</label>
+          <input type="number" name="totalprice" autofocus autocomplete="off" required>
+        </div>
+        <div class="button-container">
+          <div>
+            <div>
+              <!-- Save and cancel buttons -->
+              <button class="cancel-button" type="button">CANCEL</button>
+              <button class="save-button" type="submit">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/JS/ItemsScript.js"></script>
+  </div>
+</body>
+
+</html>

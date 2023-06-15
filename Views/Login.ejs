@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Labs</title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/CSS/Login.css">
+
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+  </head>
+
+</head>
+
+<body>
+
+  <h1 class="brand-name">Data Labs</h1>
+
+  <div class="animation-area">
+
+    <div class="login-container">
+
+      <form class="login-form" action="/login" method="POST">
+        <h3>Login</h3>
+
+        <input type="text" name="username" placeholder="Username" required autocomplete="off">
+        <input type="password" name="password" placeholder="Password" required autocomplete="off">
+        <button type="submit">Log In</button>
+        <p> <a href="/forgot">Forgot Password ?</a></p>
+      </form>
+    </div>
+    <% if (typeof invalidCredentials !== 'undefined' && invalidCredentials) { %>
+    <h3 class="invalid-credentials">Invalid Credentials</h3>
+    <% } %>
+    <ul class="box-area">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+
+</body>
+
+</html>

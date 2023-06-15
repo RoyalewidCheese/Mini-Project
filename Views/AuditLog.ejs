@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Data Labs
+  </title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/CSS/AuditLog.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+</head>
+
+<body>
+  <!-- Sidebar component -->
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- SidebarHeader component -->
+    <div class="sidebar-header">
+      <!-- Brand component -->
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <!-- SidebarToggle component -->
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!-- SidebarMenu component -->
+    <div class="sidebar-menu">
+      <ul>
+        <!-- SidebarMenuItem component -->
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items/page/1" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <li>
+          <a href="" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li>
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2 class="dashboard-header">Stock Details</h2>
+      <div class="social-icons">
+        <span class="ti-bell"></span>
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1 class="dash-header">Audit Log</h1>
+        <div class="dash-cards">
+          <!-- Audit Log visualization -->
+          <div class="audit-log-visualization">
+            <h3>Recent Actions:</h3>
+            <% if (auditLogData) { %>
+            <ul>
+              <% auditLogData.forEach((action, index) => { %>
+              <li class="<%= index % 2 === 0 ? 'even' : 'odd' %>">
+                <span><%= action.date.toISOString().slice(0, 19).replace('T', ' ') %></span>
+                <span class="action"><%= action.action %></span>
+                <span class="user">By: <%= action.user %></span>
+              </li>
+              <% }) %>
+            </ul>
+            <% } else { %>
+            <p>No audit log data available.</p>
+            <% } %>
+          </div>
+          <!-- End of Audit Log visualization -->
+        </div>
+        <section class="recent">
+          <!-- ... -->
+        </section>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/JS/AuditLogScript.js"></script>
+      </div>
+</body>
+
+</html>
