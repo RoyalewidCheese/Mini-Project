@@ -13,6 +13,7 @@ const forgotRoute = require("./Routes/ForgotRoute");
 const otpRoute = require("./Routes/OTPRoute");
 const newpasswordRoute = require("./Routes/NewPasswordRoute");
 const auditlogRoute = require("./Routes/AuditLogRoute");
+const inventoryRoute= require("./Routes/InventoryRoute");
 const session = require('express-session');
 
 app.use(session({
@@ -40,6 +41,7 @@ app.use("/", forgotRoute);
 app.use("/", otpRoute);
 app.use("/", newpasswordRoute);
 app.use("/", auditlogRoute);
+app.use("/", inventoryRoute);
 
 const PORT = 3000;
 app.listen(PORT, () => {
