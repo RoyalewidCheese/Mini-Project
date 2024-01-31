@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/CSS/Profile.css" />
+  <title>Data Labs</title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" />
+</head>
+
+<body>
+  <!--Menu Lateral-->
+  <input type="checkbox" id="sidebar-toggle" />
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!--Botões do Menu Lateral-->
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items/page/1" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/inventory" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <!--Conteudos do Site-->
+  <div class="main-content">
+    <!--Campo de Busca-->
+    <header>
+      <h2 class="dashboard-header">Profile</h2>
+      <div class="dash-cards">
+      </div>
+
+      <div class="social-icons">
+        <!-- <span class="ti-bell"></span> -->
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="profile-content">
+        <div class="profile-header">
+          <div class="profile-picture">
+          </div>
+          <h1 class="profile-name"><%= user.name %></h1>
+        </div>
+        <div class="profile-details">
+          <div class="profile-info">
+            <div class="profile-info-item">
+              <span class="info-label">Username:</span>
+              <span class="info-value"><%= username %></span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">Role:</span>
+              <span class="info-value"><%= role_id %></span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">E-mail:</span>
+              <span class="info-value"><%= email %></span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">Phone Number:</span>
+              <span class="info-value"><%= phone_number %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/JS/ProfileScript.js"></script>
+  </div>
+
+</body>
+
+</html>

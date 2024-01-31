@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Labs</title>
+  <link rel="stylesheet" href="/CSS/Inventory.css">
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+</head>
+
+<body>
+  <!-- Sidebar component -->
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- SidebarHeader component -->
+    <div class="sidebar-header">
+      <!-- Brand component -->
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <!-- SidebarToggle component -->
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!-- SidebarMenu component -->
+    <div class="sidebar-menu">
+      <ul>
+        <!-- SidebarMenuItem component -->
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2 class="dashboard-header">Inventory</h2>
+      <div class="social-icons">
+        <span class="ti-bell"></span>
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1 class="dash-header">Inventory</h1>
+
+        <div class="dash-cards">
+        </div>
+        <section class="recent">
+          <div class="activity-card">
+            <div class="navigation-panel">
+              <div class="navigation-panel-header">
+                <div class="navigation-panel-items">
+                  <a href="#" class="navigation-panel-item">New</a>
+                  <a href="#" class="navigation-panel-item">Old</a>
+                  <a href="#" class="navigation-panel-item">Damaged</a>
+                  <a href="#" class="navigation-panel-item">Borrowed</a>
+                  <a href="#" class="navigation-panel-item">Lost</a>
+                  <div class="filter-bar">
+                    <select id="filter-select">
+                      <option value="" selected disabled>Select Filter</option>
+                      <option value="filter1">Category</option>
+                      <option value="filter2">Brand</option>
+                      <option value="filter3">Model</option>
+                      <option value="filter4">Supplier</option>
+                      <option value="filter5">Lab Location</option>
+                      <option value="filter6">Type</option>
+                      <option value="filter7">Stock Type</option>
+                      <option value="filter8">Indent Number</option>
+                      <option value="filter9">Stock Number</option>
+                      <option value="filter10">Reference Page</option>
+                    </select>
+                    <button class="filter-button">Apply Filter</button>
+                    <input type="text" id="search-input">
+                    <button class="filter-button">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="side-menu-overlay"></div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <!-- Table header -->
+                  <tr>
+                    <th>Item ID</th>
+                    <th>Status</th>
+                    <th>Category</th>
+                    <th>Lab Location</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <tr>
+                    <td>
+                      <span class="Inventory-name"></span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button class="view-details-button" data-borrower-id="">View Details</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="pagination">
+                <a href="/inventory/page/" class="Previous">&laquo; Prev</a>
+                <span>Page</span>
+                <a href="/inventory/page/1" class="Next"> Next &raquo;</a>
+              </div>
+
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay">
+      <div class="popup">
+        <h3 class="borrower-details">Item Details</h3>
+        <hr class="hr-margin">
+        <table id="details-table">
+          <tbody>
+            <!-- Table rows with borrower details -->
+            <tr>
+              <td>
+                <h4 class="left-align">Item ID:</h4>
+              </td>
+              <td class="right-align" id="item_id"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Stock Type:</h4>
+              </td>
+              <td class="right-align" id="stock_type"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Indent No:</h4>
+              </td>
+              <td class="right-align" id="indent_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Sub Indent No:</h4>
+              </td>
+              <td class="right-align" id="sub_indent_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Stock No:</h4>
+              </td>
+              <td class="right-align" id="stock_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Reference Page:</h4>
+              </td>
+              <td class="right-align" id="reference_page"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Invoice ID:</h4>
+              </td>
+              <td class="right-align" id="invoice_id"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Invoice Date:</h4>
+              </td>
+              <td class="right-align" id="invoice_date"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Category:</h4>
+              </td>
+              <td class="right-align" id="category"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Brand:</h4>
+              </td>
+              <td class="right-align" id="brand"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Model:</h4>
+              </td>
+              <td class="right-align" id="model"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Description:</h4>
+              </td>
+              <td class="right-align" id="description"></td>
+            </tr>
+            <tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Warranty:</h4>
+              </td>
+              <td class="right-align" id="warranty"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Type:</h4>
+              </td>
+              <td class="right-align" id="type"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Lab Location:</h4>
+              </td>
+              <td class="right-align" id="lab_location"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Quantity</h4>
+              </td>
+              <td class="right-align" id="quantity"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Price Per Item:</h4>
+              </td>
+              <td class="right-align" id="price_per_item"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Total Price:</h4>
+              </td>
+              <td class="right-align" id="total_price"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Supplier Name:</h4>
+              </td>
+              <td class="right-align" id="supplier_name"></td>
+            </tr>
+        </table>
+        <div class="button-contained">
+          <div class="button-wrapper">
+            <!-- Save and cancel buttons -->
+            <button class="cancel-button" type="button">DELETE</button>
+            <button id="update-button" class="save-button" type="submit" id="update-button">UPDATE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/JS/InventoryScript.js"></script>
+  </div>
+</body>
+
+</html>

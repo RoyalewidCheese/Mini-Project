@@ -1,0 +1,1438 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+
+}
+
+body {
+    margin: auto;
+    width: 100%;
+    position: relative;
+    font-family: "Lexend Deca", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.home-page-top-section {
+    position: relative;
+    background: url("https://selo.b-cdn.net/wp-content/uploads/2022/09/ygubk.png") no-repeat center center;
+    background-size: cover;
+}
+
+.page-header-container {
+    background: transparent;
+    position: relative;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    padding: 0.25rem 1.5rem;
+    height: 70px;
+}
+
+.header-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+    background: #ffffff;
+    margin-top: 0;
+    padding: 0;
+}
+
+.page-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1400px;
+    border-bottom: 1px solid #0000000d;
+    padding-bottom: 8px;
+    height: 70px;
+}
+
+.page-header-title a h5 {
+    font-weight: 600;
+    letter-spacing: -0.021em;
+    font-size: 28px;
+    padding: 0;
+    margin-left: 16px;
+    margin: 0;
+}
+
+.page-header-subtitle {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    flex-grow: 1;
+    align-items: center;
+    flex-basis: auto;
+}
+
+.page-header-subtitle-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: 2rem;
+    padding-left: 1rem;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.page-header-subtitle-list li {
+    margin-right: 5rem;
+}
+
+.page-header-subtitle-list .page-header-home {
+    position: relative;
+}
+
+.page-header-subtitle-list .page-header-home a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    letter-spacing: -0.011em;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.page-header-subtitle-list .page-header-about-us {
+    position: relative;
+}
+
+.page-header-subtitle-list .page-header-about-us a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    letter-spacing: -0.011em;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.page-header-subtitle-list .page-header-our-team {
+    position: relative;
+}
+
+.page-header-subtitle-list .page-header-our-team a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    letter-spacing: -0.011em;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.page-header-subtitle-list .page-header-contact-us {
+    position: relative;
+}
+
+.page-header-subtitle-list .page-header-contact-us a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    letter-spacing: -0.011em;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.page-header-subtitle-list .page-header-shop {
+    position: relative;
+}
+
+.page-header-subtitle-list .page-header-shop a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    letter-spacing: -0.011em;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.page-header-subtitle .page-header-contact-btn {
+    margin-left: 20px;
+}
+
+.page-header-subtitle .page-header-contact-btn a div {
+    border: 1px solid #21252980;
+    background: #212529;
+    color: #ffffff;
+    box-shadow: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.009em;
+    white-space: nowrap;
+    line-height: 1;
+    padding: 9px 22px;
+    border-radius: 7px;
+    transition: color 450ms, background 450ms;
+}
+
+.home-page-get-started-wrapper {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    max-width: 1200px;
+    align-items: center;
+    --widgets-spacing: 20px;
+    box-sizing: border-box;
+}
+
+.home-page-get-started-wrapper .content-wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    display: flex;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-content {
+    flex-basis: 50%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-content .content-title {
+    color: #272c2e;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1.1em;
+    letter-spacing: -0.5px;
+    background-image: url(https://selo.b-cdn.net/wp-content/uploads/2022/09/wrhf.png);
+    background-position: 0px 96%;
+    background-repeat: no-repeat;
+    background-size: 200px auto;
+    margin-bottom: 20px;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-content .content-description {
+    color: #3b3b3b;
+    font-family: "Inter", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8em;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-content .content-btn .get-started-btn {
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #262c2e;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0px 20px 60px 0px rgba(255, 166, 84, 0);
+    padding: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-content .content-btn .get-started-btn a>div {
+    color: white;
+}
+
+.home-page-get-started-wrapper .content-wrapper .get-started-img {
+    flex-basis: 50%;
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(15px);
+    opacity: 0;
+}
+
+.reveal.active {
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all 2s ease;
+}
+
+.head-both {
+    height: 480x;
+    width: 100%;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #25252521;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    background-color: #FFFFFF;
+    background-image: url(https://selo.b-cdn.net/wp-content/uploads/2022/09/kjgrn.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.font-head {
+    position: relative;
+    margin: 100px;
+    margin-right: 320px;
+    left: 80px;
+    width: 50%;
+    padding-top: 20px;
+}
+
+.font-head .middle-title {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 2.1em;
+    letter-spacing: -0.3px;
+
+}
+
+.font-head-imgs {
+    width: 50%;
+}
+
+.font-head-imgs img {
+    position: relative;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 292px;
+    width: 247px;
+    right: 79px;
+    top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    cursor: pointer;
+    transition: all 215ms;
+    color: #6664e4;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.head .head-title {
+    color: #2CBCA5;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.4em;
+    letter-spacing: 1px;
+    font-family: 'Lexend Deca', sans-serif;
+    position: relative;
+    bottom: 10px;
+}
+
+
+.body-head-buttons {
+    letter-spacing: -0.3px;
+    font-weight: 600;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+
+.title-info {
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em;
+    position: relative;
+    top: 22px;
+}
+
+.body-head {
+    min-height: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.body-head .body-head-font {
+    padding: 100px;
+    width: 70%;
+    padding-left: 175px;
+}
+
+.body-head .body-head-font-2 {
+    width: 70%;
+    position: relative;
+    bottom: -7px;
+}
+
+.second-body {
+    text-align: left;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em;
+    padding-bottom: 0px;
+    max-width: 80%;
+}
+
+.body-head-font-2 a {
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    fill: #0F110F;
+    color: #0F110F
+}
+
+.body-head-buttons a {
+    border-bottom: 2px solid blue;
+    padding: 5px;
+}
+
+.body-head-font-2 .body-head-buttons {
+    position: relative;
+    top: 10px;
+
+}
+
+.body-head-font-2 a:hover {
+    transition: all 215ms;
+    color: #6664e4;
+}
+
+
+.body-head .first-body-imgs img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 480px;
+    padding-top: 35px;
+}
+
+.body-head .second-body-imgs img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 10px 10px 10px 10px;
+    width: 70%;
+    height: 450px;
+    position: relative;
+    top: 52px;
+
+}
+
+
+
+.body .first-body {
+    text-align: left;
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1em;
+    letter-spacing: -0.3px;
+    /* width: 500px; */
+    max-width: 100%;
+    padding-bottom: 10px;
+}
+
+.body-head-number {
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #25252521;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 40px 0px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    position: relative;
+    width: 100%;
+}
+
+.body-head-first-number .body-head-first-number-1 {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.6em;
+    position: relative;
+    left: 34px;
+}
+
+.body-head-first-number .body-head-first-word {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.6em;
+    position: relative;
+    left: 35px;
+}
+
+.body-head-first-number-info {
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    letter-spacing: 1px;
+}
+
+.body-head-second-number .body-head-second-number-2 {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.6em;
+    position: relative;
+    left: 15px;
+}
+
+.body-head-second-number .body-head-second-word {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.6em;
+    position: relative;
+    left: 10px;
+}
+
+.body-head-second-number .body-head-second-number-info {
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    letter-spacing: 1px;
+}
+
+.body-head-third-number .body-head-third-number-3 {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.6em;
+    position: relative;
+    left: 50px;
+}
+
+.body-head-third-number .body-head-third-number-info {
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    letter-spacing: 1px;
+}
+
+.value-all {
+    background-image: url(https://selo.b-cdn.net/wp-content/uploads/2022/09/efvij.png);
+    background-position: bottom center;
+    background-size: cover;
+    max-height: 100%;
+    height: 800px;
+}
+
+.value-about-us {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    justify-content: center;
+}
+
+.value-about-us .value-about-us-elment {
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1em;
+    letter-spacing: -0.3px;
+    text-align: center;
+    width: 600px;
+    display: inline-block;
+    padding-top: 100px;
+}
+
+.value-about-us .value-about-us-elment-detail {
+    text-align: center;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em;
+    width: 600px;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.value-about-us-icon {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    height: 350px;
+    margin: 50px;
+}
+
+.value-about-us-icon .value-about-us-icon-1 {
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 40px 40px 40px;
+    height: 300px;
+    position: relative;
+    left: 80px;
+}
+
+.value-about-us-icon .value-about-us-icon-2 {
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 40px 40px 40px;
+    height: 300px;
+}
+
+.value-about-us-icon .value-about-us-icon-3 {
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 40px 40px 40px;
+    height: 300px;
+    position: relative;
+    right: 80px;
+}
+
+.value-about-us-icon-1 {
+    text-align: center;
+    width: 350px;
+    height: 265px;
+    background-color: whitesmoke
+}
+
+.value-about-us-icon-1 .img-icon-trs img {
+    width: 80px;
+}
+
+.trans {
+    color: #1A1A1A;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.value-about-us-trans p {
+    margin: 0px 0px 0px 0px;
+    color: #666666C7;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6em
+}
+
+.value-about-us-icon-2 {
+    text-align: center;
+    width: 350px;
+    height: 265px;
+    background-color: whitesmoke
+}
+
+.value-about-us-icon-2 .img-icon-ex img {
+    width: 80px;
+}
+
+.exp {
+    color: #1A1A1A;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.value-about-us-ex p {
+    margin: 0px 0px 0px 0px;
+    color: #666666C7;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6em;
+}
+
+.value-about-us-icon-3 {
+    text-align: center;
+    width: 350px;
+    height: 265px;
+    background-color: whitesmoke
+}
+
+.value-about-us-icon-3 .img-icon-resu img {
+    width: 80px;
+}
+
+.resu {
+    color: #1A1A1A;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.value-about-us-resu p {
+    margin: 0px 0px 0px 0px;
+    color: #666666C7;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6em;
+}
+
+.card-show {
+    display: flex;
+    width: 100%;
+    height: 400px;
+}
+
+.team {
+    width: 100%;
+    display: grid;
+    padding: 40px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #25252521;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.team-introduce {
+    width: 100%;
+    height: 200px;
+    display: grid;
+    justify-content: center
+}
+
+.team-introduce-title {
+    text-align: center;
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1em;
+    letter-spacing: -0.3px
+}
+
+.team .team-introduce-title {
+    padding: 20px;
+}
+
+.team-introduce-info {
+    text-align: center;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em
+}
+
+.team-introduce .team-introduce-info {
+    width: 600px;
+}
+
+
+
+.ceo-card-1 {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 75px;
+}
+
+.ceo-card-1 img {
+    width: 200px;
+    border-radius: 100% 100% 100% 100%;
+}
+
+.ceo-card-1 .ceo-name {
+    text-align: center;
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.ceo-card-1 .ceo-position {
+    text-align: center;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.ceo-card-2 {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.ceo-card-2 img {
+    width: 200px;
+    border-radius: 100% 100% 100% 100%;
+}
+
+.ceo-card-2 .ceo-name {
+    text-align: center;
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.ceo-card-2 .ceo-position {
+    text-align: center;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.ceo {
+    padding: 75px;
+}
+
+.ceo-view {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.ceo-view span {
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid blue;
+    padding: 10px;
+    cursor: pointer;
+    color: #0F110F;
+}
+
+span:hover {
+    cursor: pointer;
+    transition: all 215ms;
+    color: #6664e4
+}
+
+.hundred {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.hundred-block {
+    display: inline-block;
+}
+
+.hundred-name {
+    text-align: center;
+    color: #0F110F;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1em;
+    letter-spacing: -0.3px
+}
+
+.hundred-block .hundred-name {
+    width: 600px;
+    margin-top: 30px;
+}
+
+.hundred-words {
+    text-align: center;
+    color: #666666;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em;
+}
+
+.hundred-block .hundred-words {
+    width: 600px;
+    margin-top: 30px;
+}
+
+.logo-campany-1 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+.logo-campany-1 img {
+    width: 150px;
+    height: auto;
+}
+
+.logo-company-2 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+.logo-company-2 img {
+    width: 150px;
+    height: auto;
+}
+
+.want-to-join {
+    width: 100%;
+    height: 350px;
+    background-color: #0F110F;
+    margin-top: 100px;
+}
+
+.want-to-join-words {
+    display: inline-block;
+    flex-basis: 50%;
+}
+
+.want-to-join-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.want-to-join-words .want-to-join-words-elements-1 {
+    text-align: left;
+    color: #FFFFFF;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.1em;
+    letter-spacing: -0.3px;
+}
+
+.want-to-join-words .want-to-join-words-elements-2 {
+    text-align: left;
+    color: #8B8B8B;
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.9em;
+}
+
+.background-icon {
+    background-color: #0F110F;
+    flex-basis: 20%;
+}
+
+.background-icon img {
+    width: 250px;
+    height: auto;
+}
+
+.button-a {
+    font-family: "Lexend Deca", Sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #50AF9B;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 20px 60px 0px rgb(255 166 84 / 0%);
+    padding: 15px 40px 15px 40px;
+
+}
+
+.button-a:hover {
+    background-color: #FFFFFF;
+    transition: all .45s
+}
+
+.button-a a:hover {
+    color: #0F110F;
+}
+
+.button-a a {
+    color: #FFFFFF;
+}
+
+.footer {
+    padding-top: 56px;
+}
+
+.footer .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #25252521;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.footer .footer-Selo {
+    padding: 0px 0px 32px;
+    width: 188px;
+}
+
+.footer-Selo h3 {
+    margin: 0px 0px 18px;
+    font-size: 36px;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer-Selo p {
+    margin: 0px 0px 18px;
+    font: 36px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer .footer-email {
+    padding: 0px 0px 32px;
+}
+
+
+.footer-email h3 {
+    margin: 0px 0px 18px;
+    font-size: 36px;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer-email p {
+    margin: 0px 0px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer .footer-number {
+    padding: 0px 0px 32px;
+    margin-right: 200px;
+}
+
+.footer-number h3 {
+    margin: 0px 0px 18px;
+    font-size: 36px;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer-number p {
+    margin: 0px 0px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 116px;
+}
+
+.footer-bottom .footer-Copyright {
+    font-family: 'Lexend Deca', sans-serif;
+    color: #a0a1a2;
+    margin-left: 30px;
+}
+
+.footer-bottom .footer-menu {
+    font-family: 'Lexend Deca', sans-serif;
+    display: flex;
+
+}
+
+.footer-bottom .footer-navbar-menu li {
+    position: relative;
+    right: 30px;
+    color: black;
+}
+
+.footer-menu li {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    line-height: 1.7rem;
+    font-size: 14px;
+
+}
+
+ul,
+li {
+    list-style: none;
+
+}
+
+/* REPONSIVE ZONE */
+/* moblie */
+@media only screen and (max-width: 46.1875em) {
+
+    .head {
+        flex-direction: column;
+    }
+
+    .body-head .body-head-font {
+        padding-top: 50px;
+    }
+
+    .head .head-title {
+        font-size: 14px;
+    }
+
+    .font-head .middle-title {
+        font-size: 20px;
+        width: 300px;
+        position: relative;
+        left: 35px;
+    }
+
+    .title-info {
+        position: relative;
+        left: 20px;
+        font-size: 16px;
+    }
+
+    .font-head {
+        text-align: center;
+    }
+
+    .font-head-imgs {
+        display: none;
+    }
+
+    .body-head {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .body .first-body {
+        text-align: center;
+        font-size: 32px;
+        max-width: 100%;
+        position: relative;
+        left: -43px;
+    }
+
+    .body-head-number {
+        flex-direction: column;
+        padding-bottom: 350PX;
+    }
+
+    .body-head .first-body-imgs img {
+        display: none;
+    }
+
+    .second-body {
+        font-size: 16px;
+        text-align: center;
+        max-width: 1000px;
+        position: relative;
+        left: -8px;
+        bottom: 100px;
+    }
+
+    .body-head-font-2 .body-head-buttons {
+        position: relative;
+        top: -75px;
+        left: -10px;
+    }
+
+    .body-head .second-body-imgs img {
+        max-width: 100%;
+        position: relative;
+        top: -38px;
+        right: 4px;
+        width: 10000px;
+    }
+    .body-head-number{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 200px;
+        gap: 50px;
+    }
+
+
+    .body-head-second-number {
+        position: relative;
+        right: 10px;
+    }
+
+
+    .body-head-first-number .body-head-first-number-1 {
+        font-size: 40px;
+    }
+
+    .body-head-first-number .body-head-first-word {
+        font-size: 40px;
+    }
+
+    .body-head-second-number .body-head-second-number-2 {
+        font-size: 40px;
+        position: relative;
+        left: 33px;
+    }
+
+    .body-head-second-number .body-head-second-word {
+        font-size: 40px;
+        position: relative;
+        left: 33px;
+    }
+
+    .body-head-third-number .body-head-third-number-3 {
+        font-size: 40px;
+    }
+
+    .value-about-us .value-about-us-elment {
+        text-align: center;
+        font-size: 32px;
+        letter-spacing: 0px;
+        width: 300px;
+        position: relative;
+        bottom: 65px;
+        left: 136px;
+    }
+
+    .value-about-us .value-about-us-elment-detail {
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+        bottom: 86px;
+        left: 17px;
+    }
+
+    .value-about-us-icon {
+        flex-direction: column;
+        padding-top: 350px;
+        gap: 10px
+    }
+
+    .card-show {
+        padding-top: 400px;
+        flex-direction: column;
+    }
+
+    .value-about-us-icon .value-about-us-icon-2 {
+        position: relative;
+        left: 80px;
+        top: -28px;
+    }
+
+    .value-about-us-icon .value-about-us-icon-3 {
+        position: relative;
+        left: 80px;
+        top: -52px;
+    }
+
+    .team {
+        margin-top: 2800px;
+    }
+    .contain-hunderd {
+        padding-bottom: 100px;
+    }
+
+    .value-all {
+        background-image: none;
+    }
+
+    .ceo-card-1 {
+        flex-direction: column;
+        gap: 41px;
+    }
+
+    .ceo-card-2 {
+        flex-direction: column;
+        gap: 41px;
+    }
+
+    .team-introduce-title {
+        text-align: center;
+        font-size: 32px;
+       
+    }
+
+    .team-introduce-info {
+        text-align: center;
+        font-size: 16px;
+    }
+    .ceo-porfolio-1{
+        text-align: center;
+    }
+    .ceo-porfolio-2{
+        text-align: center;
+    }
+    .ceo-porfolio-3{
+        text-align: center;
+    }
+    .ceo-porfolio-4{
+        text-align: center;
+    }
+    .ceo-porfolio-5{
+        text-align: center;
+    }
+    .ceo-porfolio-6{
+        text-align: center;
+    }
+
+
+    .ceo-view {
+        padding: 10px;
+        
+    }
+
+    .hundred-block .hundred-name {
+        font-size: 32px;
+        text-align: center;
+        width: 300px;
+        position: relative;
+        left: 157px;
+    }
+
+    .hundred-block .hundred-words {
+        text-align: center;
+        font-size: 16px;
+    }
+    .bosslogo{
+        display: flex;
+        gap: 100px;
+        padding-top: 50px;
+    }
+    .logo-campany-1 {
+        flex-direction: column;
+        position: relative;
+        left: 119px;
+        gap: 20px;
+    }
+
+    .logo-company-2 {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .want-to-join-words .want-to-join-words-elements-1 {
+        text-align: center;
+        font-size: 36px;
+        letter-spacing: 0px;
+        position: relative;
+        top: 30px;
+    }
+
+    .want-to-join-words .want-to-join-words-elements-2 {
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+        top: 50px;
+        width: 550px;
+    }
+
+    .want-to-join-elements {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .background-icon img {
+        width: 100px;
+        position: relative;
+        right: 224px;
+        top: 74px;
+    }
+
+    .button-a {
+        position: relative;
+        bottom: 70px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
+
+    .footer .footer-Selo {
+        position: relative;
+        right: 220px;
+    }
+
+    .footer .footer-email {
+        position: relative;
+        right: 146px;
+    }
+
+    .footer .footer-number {
+        position: relative;
+        right: 91px;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse;
+        height: 80px;
+    }
+
+    .footer-menu ul,
+    li {
+        position: relative;
+        top: 20px;
+        left: 10px;
+
+    }
+
+    .footer-bottom .footer-Copyright {
+        font-size: 15px;
+    }
+}

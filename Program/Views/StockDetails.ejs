@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Data Labs
+  </title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/CSS/StockDetails.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+</head>
+
+<body>
+  <!-- Sidebar component -->
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- SidebarHeader component -->
+    <div class="sidebar-header">
+      <!-- Brand component -->
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <!-- SidebarToggle component -->
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!-- SidebarMenu component -->
+    <div class="sidebar-menu">
+      <ul>
+        <!-- SidebarMenuItem component -->
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items/page/1" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/inventory" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2 class="dashboard-header">Stock Details</h2>
+      <div class="social-icons">
+        <!-- <span class="ti-bell"></span> -->
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1 class="dash-header">Stock Details</h1>
+        <div class="dash-cards">
+        </div>
+        <section class="recent">
+          <div class="activity-card">
+            <div class="add-room-button-container">
+              <div>
+                <h3>Current Stocks</h3>
+              </div>
+              <button class="add-room-button">Add Stock</button>
+            </div>
+            <div class="side-menu-overlay"></div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <!-- Table header -->
+                  <tr>
+                    <th><a href="#" class="sort-link" data-column="indent_no">Indent No</a></th>
+                    <th><a href="#" class="sort-link" data-column="sub_indent_no">Sub-Indent No</a></th>
+                    <th><a href="#" class="sort-link" data-column="stock_no">Stock No</a></th>
+                    <th><a href="#" class="sort-link" data-column="item_id">Item ID</a></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <% items.forEach(Mainstock => { %>
+                  <tr>
+                    <td><%= Mainstock.indent_no %></td>
+                    <td><%= Mainstock.sub_indent_no %></td>
+                    <td><%= Mainstock.stock_no %></td>
+                    <td><%= Mainstock.item_id %></td>
+                    <td>
+                      <button class="view-details-button" data-item-id="<%= Mainstock.item_id %>">View Details</button>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </section>
+    </main>
+    <div class="popup-overlay">
+      <div class="popup">
+        <h3 class="borrower-details">Item Details</h3>
+        <hr class="hr-margin">
+        <table id="details-table">
+          <tbody>
+            <tr>
+              <td>
+                <h4 class="left-align">Item ID:</h4>
+              </td>
+              <td class="right-align" id="item_id"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Indent No:</h4>
+              </td>
+              <td class="right-align" id="indent_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Sub Indent No:</h4>
+              </td>
+              <td class="right-align" id="sub_indent_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Stock No:</h4>
+              </td>
+              <td class="right-align" id="stock_no"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Category:</h4>
+              </td>
+              <td class="right-align" id="cat_name"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Reference Page:</h4>
+              </td>
+              <td class="right-align" id="reference_page"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Invoice ID:</h4>
+              </td>
+              <td class="right-align" id="invoice_id"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Invoice Date:</h4>
+              </td>
+              <td class="right-align" id="invoice_date"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Supplier Name:</h4>
+              </td>
+              <td class="right-align" id="supplier_name"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Stock Type:</h4>
+              </td>
+              <td class="right-align" id="stock_type"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="button-contained">
+          <div class="button-wrapper">
+            <!-- Save and cancel buttons -->
+            <button class="cancel-button" type="button">DELETE</button>
+            <button id="update-button" class="save-button" type="submit" id="update-button">UPDATE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-side-menu">
+      <h4>Update Stock</h4>
+      <hr>
+      <form id="update-stock-form" action="/update-stockdetails" method="POST">
+        <div>
+          <label class="name" style="margin-top: 15px;">Indent No</label>
+          <input type="text" name="indent_no" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Sub-Indent No</label>
+          <input type="number" name="sub_indent_no" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Stock No</label>
+          <input type="number" name="stock_no" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Invoice ID</label>
+          <input type="text" name="invoice_id" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Invoice Date</label>
+          <input type="date" name="invoice_date" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Supplier Name</label>
+          <input type="text" name="supplier_name" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Stock Type</label>
+          <select name="stock_type" class="stock_type" required>
+            <option value="" selected disabled>Select Stock Type</option>
+            <option value="Mainstock">Mainstock</option>
+            <option value="TEQIP">TEQIP</option>
+          </select>
+        </div>
+        <div>
+          <label class="name">Reference Page</label>
+          <input type="number" name="reference_page" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div class="button-container">
+          <div>
+            <!-- Save and cancel buttons -->
+            <button class="close-button" type="button">CANCEL</button>
+            <button class="save-button" type="submit">UPDATE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="side-menu">
+      <h4>Add Stock Details</h4>
+      <hr>
+      <form id="" action="/add-stockdetails" method="POST">
+        <div>
+          <label class="name" style="margin-top: 15px;">Item ID</label>
+          <input type="text" name="item_id" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Indent No</label>
+          <input type="text" name="indent_no" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Sub-Indent No</label>
+          <input type="number" name="sub_indent_no" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Stock No</label>
+          <input type="number" name="stock_no" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Invoice ID</label>
+          <input type="text" name="invoice_id" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Invoice Date</label>
+          <input type="date" name="invoice_date" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Supplier Name</label>
+          <input type="text" name="supplier_name" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label class="name">Stock Type</label>
+          <select name="stock_type" class="stock_type">
+            <option value="" selected disabled>Select Stock Type</option>
+            <option value="Mainstock">Mainstock</option>
+            <option value="TEQIP">TEQIP</option>
+          </select>
+          <div>
+            <div>
+              <label class="name">Reference Page</label>
+              <input type="number" name="reference_page" min="0" autofocus autocomplete="off" required>
+              <div class="button-container">
+                <div>
+                  <div>
+                    <!-- Save and cancel buttons -->
+                    <button class="cancel-button" type="button">CANCEL</button>
+                    <button class="save-button" style="padding-left: 30px;
+                    padding-right: 30px;" type="submit">SAVE</button>
+                  </div>
+                </div>
+              </div>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/JS/StockDetailsScript.js"></script>
+  </div>
+</body>
+
+</html>

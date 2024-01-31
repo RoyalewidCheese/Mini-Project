@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Labs</title>
+  <link rel="icon" href="/Images/Icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/CSS/Borrowers.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+</head>
+
+<body>
+  <!-- Sidebar component -->
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- SidebarHeader component -->
+    <div class="sidebar-header">
+      <!-- Brand component -->
+      <h3 class="brand">
+        <span class="ti-unlink"></span>
+        <span>Data Labs</span>
+      </h3>
+      <!-- SidebarToggle component -->
+      <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+    <!-- SidebarMenu component -->
+    <div class="sidebar-menu">
+      <ul>
+        <!-- SidebarMenuItem component -->
+        <li>
+          <a href="/dashboard/page/1" class="dashboard-link">
+            <span class="ti-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/stockdetails/page/1" class="Mainstock-link">
+            <span class="ti-files"></span>
+            <span>Stock Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="/borrowers/page/1" class="Borrowers-link">
+            <span class="ti-agenda"></span>
+            <span>Borrowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/items" class="Items-link">
+            <span class="ti-clipboard"></span>
+            <span>Items</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/inventory" class="Assigning-link">
+            <span class="ti-folder"></span>
+            <span>Inventory</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="/overview" class="Timesheet-link">
+            <span class="ti-pie-chart"></span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <% if (isAdmin) { %>
+        <li>
+          <a href="/users" class="Contacts-link">
+            <span class="ti-book"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <% } %>
+        <% if (isAdmin || isLabManager) { %>
+        <li>
+          <a href="/auditlog" class="Accounts-link">
+            <span class="ti-settings"></span>
+            <span>Audit Log</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2 class="dashboard-header">Borrowers</h2>
+      <div class="social-icons">
+        <!-- <span class="ti-bell"></span> -->
+        <span class="ti-user" id="user-icon"></span>
+        <div class="dropdown" id="dropdown-menu">
+          <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1 class="dash-header">Borrowers</h1>
+        <div class="dash-cards">
+        </div>
+        <section class="recent">
+          <div class="activity-card">
+            <div class="add-room-button-container">
+              <div>
+                <h3>Current Borrowers</h3>
+              </div>
+              <button class="add-room-button">Add Student</button>
+            </div>
+            <div class="side-menu-overlay"></div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <!-- Table header -->
+                  <tr>
+                    <th>Borrower Name</th>
+                    <th>Item ID</th>
+                    <th>Category</th>
+                    <th>Lab Location</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <% borrowers.forEach(function(borrower) { %>
+                  <tr>
+                    <td>
+                      <span class="borrower-name"><%= borrower.student_name %></span>
+                    </td>
+                    <td><%= borrower.item_id %></td>
+                    <td><%= borrower.cat_name %></td>
+                    <td><%= borrower.lab_location %></td>
+                    <td>
+                      <button class="view-details-button" data-borrower-id="<%= borrower.borrower_id %>">View Details</button>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+
+              <div class="pagination">
+                <% if (currentPage > 1) { %>
+                <a href="/borrowers/page/<%= currentPage - 1 %>" class="Previous">&laquo; Prev</a>
+                <% } %>
+                <span>Page <%= currentPage %></span>
+                <% if (items.length === limit) { %>
+                <a href="/borrowers/page/<%= currentPage + 1 %>" class="Next"> Next &raquo;</a>
+                <% } %>
+              </div>
+
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay">
+      <div class="popup">
+        <h3 class="borrower-details">Borrower Details</h3>
+        <hr class="hr-margin">
+        <table id="details-table">
+          <tbody>
+            <!-- Table rows with borrower details -->
+            <tr>
+              <td>
+                <h4 class="left-align">Name:</h4>
+              </td>
+              <td class="right-align" id="student-name"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Adm No:</h4>
+              </td>
+              <td class="right-align" id="admission-number"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Branch:</h4>
+              </td>
+              <td class="right-align" id="branch"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Semester:</h4>
+              </td>
+              <td class="right-align" id="semester"></td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Phone No:</h4>
+              </td>
+              <td class="right-align" id="phone-number"></td>
+            </tr>
+            <tr>
+            <tr>
+              <td>
+                <h4 class="left-align">Lent On</h4>
+              </td>
+              <td class="right-align" id="borrowed-on"></td>
+            </tr>
+        </table>
+        <div class="button-contained">
+          <div class="button-wrapper">
+            <!-- Save and cancel buttons -->
+            <button class="cancel-button" type="button">Returned</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-side-menu">
+      <h4>Update Student</h4>
+      <hr>
+      <form id="updateStudentForm" action="/borrowers/update" method="POST">
+        <div>
+          <label>Admission Number</label>
+          <input type="number" name="admissionNo" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Branch</label>
+          <select name="branch" class="branch-select">
+            <option value="" selected disabled>Select Branch</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Electronics Engineering">Electronics Engineering</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+          </select>
+        </div>
+        <div>
+          <label>Semester</label>
+          <select name="semester" class="semester-select" required>
+            <option value="" selected disabled>Select Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+        <div>
+          <label>Item ID</label>
+          <input type="text" name="itemId" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="number" name="phoneNumber" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Borrowed Date</label>
+          <input type="date" name="borrowerDate" autofocus autocomplete="off" required>
+        </div>
+        <div class="button-container">
+          <div>
+            <div>
+              <!-- Save and cancel buttons -->
+              <button class="cancel-button" type="button">CANCEL</button>
+              <button class="save-button" type="submit">UPDATE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="side-menu">
+      <h4>Add Student</h4>
+      <hr>
+      <form id="addStudentForm" action="/borrowers/add" method="POST">
+        <div>
+          <label class="Student-Name">Student Name</label>
+          <input type="text" name="studentName" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Admission Number</label>
+          <input type="number" name="admissionNo" min="0" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Branch</label>
+          <select name="branch" class="branch-select">
+            <option value="" selected disabled>Select Branch</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Electronics Engineering">Electronics Engineering</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+          </select>
+        </div>
+        <div>
+          <label>Semester</label>
+          <select name="semester" class="semester-select" required>
+            <option value="" selected disabled>Select Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+        <div>
+          <label>Item ID</label>
+          <input type="text" name="itemId" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input type="number" name="phoneNumber" autofocus autocomplete="off" required>
+        </div>
+        <div>
+          <label>Borrowed Date</label>
+          <input type="date" name="borrowerDate" autofocus autocomplete="off" required>
+        </div>
+        <div class="button-container">
+          <div>
+            <div>
+              <!-- Save and cancel buttons -->
+              <button class="cancel-button" type="button">CANCEL</button>
+              <button class="save-button" type="submit">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="side-menu-overlay"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/JS/BorrowersScript.js"></script>
+  </div>
+</body>
+
+</html>
